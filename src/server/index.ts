@@ -26,7 +26,12 @@ await server.start();
 // Set up our Express middleware to handle CORS, body parsing & expressMiddleware function.
 app.use(
   '/',
-  cors<cors.CorsRequest>(),
+
+  cors<cors.CorsRequest>({
+    origin: ['http://localhost:3000', 'https://studio.apollographql.com'],
+    credentials: true
+  }),
+
   bodyParser.json({ limit: '50mb' }),
 
   expressMiddleware(server, {
