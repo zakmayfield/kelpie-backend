@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2021",
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "rootDir": "src"
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["dist", "node_modules"],
+  "ts-node": {
+    "esm": true
+  }
+}
