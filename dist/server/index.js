@@ -24,5 +24,6 @@ app.use('/', cors({
 }), bodyParser.json({ limit: '50mb' }), expressMiddleware(server, {
     context: async ({ req, res }) => await createContext(prisma, req, res),
 }));
-await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
-console.log(`🚀 Server ready at http://localhost:4000/`);
+const port = Number.parseInt(process.env.PORT) || 4000;
+await new Promise((resolve) => httpServer.listen({ port }, resolve));
+console.log(`🚀 Server ready at http://localhost:${port}`);

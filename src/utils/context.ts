@@ -8,7 +8,7 @@ export async function createContext(
 ): Promise<ServerContext> {
 
   const headers = req.headers
-  console.log('::: headers in context :::', headers)
+  // console.log('::: headers in context :::', headers)
 
   return {
     db,
