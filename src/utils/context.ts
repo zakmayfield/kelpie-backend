@@ -3,9 +3,13 @@ import { ServerContext } from '../types.js';
 
 export async function createContext(
   db: PrismaClient,
-  req: Record<string, any>,
-  res: Record<string, any>
+  req: any,
+  res: any
 ): Promise<ServerContext> {
+
+  const headers = req.headers
+  console.log('::: headers in context :::', headers)
+
   return {
     db,
     req,
