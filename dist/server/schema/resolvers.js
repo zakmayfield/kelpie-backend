@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-const APP_SECRET = process.env.APP_SECRET ?? 'keep it secret, keep it safe';
+const APP_SECRET = process.env.APP_SECRET ?? 'abc123';
 export const generateToken = (userId) => {
     return jwt.sign({ userId }, APP_SECRET, { expiresIn: '24h' });
 };
@@ -13,8 +13,8 @@ export const resolvers = {
     Mutation: {
         login: async (parent, args, context) => {
             const { email } = args;
-            console.log('::: args :::', args);
-            // probably want to do some bcrypt stuff here
+            // probably want to do some bcrypt stuff here or determine if i need to do this on the client, probably not though
+            // check if passwords match, ect
             const user = await context.db.user.findUnique({
                 where: { email },
                 select: {
