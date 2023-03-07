@@ -5,3 +5,8 @@ export interface ServerContext {
   req: any;
   res: any;
 }
+
+export interface LoginArgs {
+  email: string;
+  password: string;
+}

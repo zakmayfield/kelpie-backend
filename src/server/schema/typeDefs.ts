@@ -1,7 +1,10 @@
-
 export const typeDefs = /* GraphQL */ `
   type Query {
     getPets: [Pet]!
+  }
+
+  type Mutation {
+    login(email: String!, password: String!): AuthPayload
   }
 
   type Address {

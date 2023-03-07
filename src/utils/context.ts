@@ -8,7 +8,9 @@ export async function createContext(
 ): Promise<ServerContext> {
 
   const headers = req.headers
-  // console.log('::: headers in context :::', headers)
+
+  // run an auth check here possibly & return auth user or other context
+  // console.log('headers ::: backend', headers)
 
   return {
     db,
