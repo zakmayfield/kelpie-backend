@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { GraphQLError } from 'graphql';
 const APP_SECRET = process.env.APP_SECRET ?? 'abc123';
 export const generateToken = (userId) => {
     return jwt.sign({ userId }, APP_SECRET, { expiresIn: '24h' });
@@ -25,6 +26,9 @@ export const resolvers = {
                     type: true
                 }
             });
+            if (!user) {
+                return Promise.reject(new GraphQLError(`🚫 That user doesn't seem to exist.`));
+            }
             return {
                 user,
                 token: generateToken(user.id)

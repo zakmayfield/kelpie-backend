@@ -1,5 +1,6 @@
 import { ServerContext, LoginArgs } from '../../types.js';
 import jwt from 'jsonwebtoken'
+import { GraphQLError } from 'graphql';
 
 const APP_SECRET = process.env.APP_SECRET ?? 'abc123'
 
@@ -30,6 +31,12 @@ export const resolvers = {
           type: true
         }
       })
+      
+      if (!user) {
+        return Promise.reject(
+          new GraphQLError(`🚫 That user doesn't seem to exist.`)
+        );
+      }
 
       return {
         user,
