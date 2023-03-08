@@ -39,6 +39,7 @@ export const resolvers = {
       }
 
       return {
+        // i dont think i should send a user along with this, the whole point of attempting to use cookies is to avoid exposing our user data easily, sending a token with only an id is better than sending an email, ect
         user,
         token: generateToken(user.id)
       }
